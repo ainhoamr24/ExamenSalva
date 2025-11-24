@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { TareasService } from '../../services/tareas-service';
+import { Tarea } from '../../Models/tarea';
 
 @Component({
   selector: 'app-tarea',
@@ -10,15 +9,10 @@ import { TareasService } from '../../services/tareas-service';
   templateUrl: './tarea.html',
   styleUrl: './tarea.css'
 })
-export class Tarea {
+export class TareaCard {
+  @Input() tarea!: Tarea;
 
-  tarea!: TareasService;
-  activatedRoute = inject(ActivatedRoute)
-  tareaService = inject(TareasService)
-
-  /*get colorFondo(): string {
-    return this.tarea.estado === 'Pendiente'
-      ? '#EDE7A5'
-      : '#E8BDE4';
-  }*/
+  get colorFondo(): string {
+    return this.tarea.estado === 'Pendiente' ? '#EDE7A5' : '#E8BDE4';
+  }
 }

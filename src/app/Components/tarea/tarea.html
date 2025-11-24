@@ -1,9 +1,8 @@
-<div class="card" [style.background-color]>                 <!-- Definir property Binding color de fondo -->
+<div class="card" [style.background-color]="colorFondo">
     <div class="card-body">
-        <h5 class="card-title"> xxxx </h5>                  <!-- nombre de la tarea -->
+        <h5 class="card-title"> {{ tarea.nombre }} </h5>
         <b>
-            <p class="card-text text-center"> xxxx </p>     <!-- estado de la tarea -->
-
+            <p class="card-text text-center"> {{ tarea.estado }} </p>
         </b>
     </div>
 </div>

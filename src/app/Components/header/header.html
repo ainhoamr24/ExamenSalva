@@ -3,14 +3,14 @@
 
     <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <a class="nav-link">Inicio</a>      
+            <a class="nav-link" routerLink="/">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link">Tareas</a>
+            <a class="nav-link" routerLink="/tareas">Tareas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link">Panel</a>
+            <a class="nav-link" routerLink="/panel">Panel</a>
         </li>
-        <li [style.color]="'orange'" class="nav-link"></li> <!-- Poner total tareas -->
+        <li [style.color]="'orange'" class="nav-link">{{ totalTareas$ | async }}</li>
     </ul>
 </nav>

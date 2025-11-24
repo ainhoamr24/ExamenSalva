@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { TareasService } from '../../services/tareas-service';
 import { Router } from '@angular/router';
+import { TareasService } from '../../Services/tareas-service';
+import { Tarea } from '../../Models/tarea';
 
 @Component({
   selector: 'app-tareas',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './tareas.html',
   styleUrl: './tareas.css'
 })
-export class Tareas {
-
-  tareas: Tareas[] = [];
-  tareasFiltradas: Tareas[] = [];
+export class Tareas implements OnInit {
+  tareas: Tarea[] = [];
+  tareasFiltradas: Tarea[] = [];
   filtroEstado: string = 'Todas';
 
   totalPendientes: number = 0;
@@ -26,8 +25,12 @@ export class Tareas {
   ) {}
 
   ngOnInit(): void {
-    this.tareasService.cargarTareas().subscribe(() => {
-      this.tareas = this.tareasService.getAll();
+    this.cargarTareas();
+  }
+
+  private cargarTareas(): void {
+    this.tareasService.cargarTareas().subscribe((tareas) => {
+      this.tareas = tareas;
       this.aplicarFiltroYTotales();
     });
   }
@@ -37,12 +40,12 @@ export class Tareas {
       this.tareasFiltradas = [...this.tareas];
     } else {
       this.tareasFiltradas = this.tareas.filter(
-        t => t.estado === this.filtroEstado
+        (t) => t.estado === this.filtroEstado
       );
     }
 
-    this.totalPendientes = this.tareas.filter(t => t.estado === 'Pendiente').length;
-    this.totalRealizadas = this.tareas.filter(t => t.estado === 'Realizada').length;
+    this.totalPendientes = this.tareas.filter((t) => t.estado === 'Pendiente').length;
+    this.totalRealizadas = this.tareas.filter((t) => t.estado === 'Realizada').length;
   }
 
   onCambioFiltro(valor: string): void {
@@ -55,9 +58,9 @@ export class Tareas {
   }
 
   eliminar(id: string): void {
-    this.tareasService.delete(id);
-    this.tareas = this.tareasService.getAll();
-    this.aplicarFiltroYTotales();
+    this.tareasService.delete(id).subscribe(() => {
+      this.tareas = this.tareas.filter((t) => t.id !== id);
+      this.aplicarFiltroYTotales();
+    });
   }
 }
-
