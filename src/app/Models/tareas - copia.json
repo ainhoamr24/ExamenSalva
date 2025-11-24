@@ -1,0 +1,44 @@
+{
+  "tareas": [
+    {
+      "id": "1",
+      "nombre": "Examen Cliente",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "2",
+      "nombre": "Examen Servidor",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "3",
+      "nombre": "Examen Interfaces",
+      "estado": "Realizada"
+    },
+    {
+      "id": "4",
+      "nombre": "Examen Despliegue",
+      "estado": "Realizada"
+    },
+    {
+      "id": "5",
+      "nombre": "Examen IPL2",
+      "estado": "Pendiente"
+    },
+    {
+      "id": "6",
+      "nombre": "Examen Digitalizacion",
+      "estado": "Realizada"
+    },
+    {
+      "id": "7",
+      "nombre": "Examen Testing",
+      "estado": "Realizada"
+    },
+    {
+      "id": "8",
+      "nombre": "Examen Proyecto 2DAW",
+      "estado": "Realizada"
+    }
+  ]
+}
