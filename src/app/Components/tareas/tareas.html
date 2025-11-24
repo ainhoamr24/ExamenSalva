@@ -7,22 +7,30 @@
                 <th>id</th>
                 <th>nombre</th>
                 <th>estado
-                    <select>
+                    <select class="form-select" (change)="onCambioFiltro($any($event.target)?.value)">
                         <option value="Todas">Todas</option>
                         <option value="Pendiente">Pendiente</option>
                         <option value="Realizada">Realizada</option>
                     </select>
                 </th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            
-		<!--Mostrar en cada fila de la tabla id, nombre, estado y los botones de Finalizar y Eliminar -->		
-
+            <tr *ngFor="let tarea of tareasFiltradas">
+                <td>{{ tarea.id }}</td>
+                <td>{{ tarea.nombre }}</td>
+                <td>{{ tarea.estado }}</td>
+                <td>
+                    <button class="btn btn-danger" [disabled]="tarea.estado === 'Realizada'" (click)="finalizar(tarea.id)">Finalizar</button>
+                    &nbsp;
+                    <button class="btn btn-primary" (click)="eliminar(tarea.id)">Eliminar</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 
-    <h4>Total Pendientes: xxxx </h4>     <!--total tareas Pendientes -->
-    <h4>Total Realizadas: xxxx </h4>     <!--total tareas Realizadas -->
+    <h4>Total Pendientes: {{ totalPendientes }} </h4>
+    <h4>Total Realizadas: {{ totalRealizadas }} </h4>
 
 </div>

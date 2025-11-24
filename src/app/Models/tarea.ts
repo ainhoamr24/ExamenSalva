@@ -1,5 +1,5 @@
-interface Tarea{
-    id: string;
-    nombre: string;
-    estado: string;
+export interface Tarea {
+  id: string;
+  nombre: string;
+  estado: string;
 }

@@ -1,10 +1,10 @@
 <h3 class="text-center">Panel de Tareas</h3>
 <div id="contenedor" class="row row-cols-1 row-cols-md-3 g-3">
-
-   <!-- Cargar todas las tareas -->
-
+    <div class="col" *ngFor="let tarea of tareas">
+        <app-tarea [tarea]="tarea"></app-tarea>
+    </div>
 </div>
 <br>
 <div class="text-center">
-    <button class="btn btn-primary">Tareas</button>
+    <button class="btn btn-primary" (click)="volverTareas()">Tareas</button>
 </div>
