@@ -1,11 +1,6 @@
 {
   "tareas": [
     {
-      "id": "1",
-      "nombre": "Examen Cliente",
-      "estado": "Pendiente"
-    },
-    {
       "id": "2",
       "nombre": "Examen Servidor",
       "estado": "Pendiente"
@@ -40,5 +35,6 @@
       "nombre": "Examen Proyecto 2DAW",
       "estado": "Realizada"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
