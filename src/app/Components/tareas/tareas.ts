@@ -48,11 +48,6 @@ export class Tareas implements OnInit {
     this.totalRealizadas = this.tareas.filter((t) => t.estado === 'Realizada').length;
   }
 
-  onCambioFiltro(valor: string): void {
-    this.filtroEstado = valor;
-    this.aplicarFiltroYTotales();
-  }
-
   finalizar(id: string): void {
     this.router.navigate(['/fin', id]);
   }
